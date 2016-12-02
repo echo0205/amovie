@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:tx="http://www.springframework.org/schema/tx"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:mvc="http://www.springframework.org/schema/mvc"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+			http://www.springframework.org/schema/tx
+			http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-3.0.xsd
+			http://www.springframework.org/schema/mvc
+			http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+		<!-- @Controller扫描 -->
+		<context:component-scan base-package="org.lanqiao.controller"></context:component-scan>
+		<!-- 默认的注解映射的支持 -->
+		<mvc:annotation-driven />
+		<!-- 解决静态资源无法加载问题 -->
+		<mvc:default-servlet-handler />
+<!-- 		<mvc:resources location="/static/js/" mapping="/static/js/**"/> -->
+<!-- 		<mvc:resources location="/static/css/" mapping="/static/css/**"/> -->
+<!-- 		<mvc:resources location="/static/error/" mapping="/static/error/**"/> -->
+		
+		<bean id="freemarkerConfigurer"  class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+			<property name="templateLoaderPath"  value="/WEB-INF/view/"></property>
+			<property name="freemarkerSettings">
+				<props>  
+		            <prop key="template_update_delay">0</prop>  
+		            <prop key="default_encoding">utf-8</prop>  
+		            <prop key="number_format">0.##</prop>  
+		            <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>  
+		            <prop key="classic_compatible">true</prop>
+        		</props>  
+			</property>
+		</bean>
+		<bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+			<property name="suffix"  value=".ftl"></property>
+			<property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"></property>
+			<property name="contentType"  value="text/html;charset=utf-8"></property>
+			<property name="requestContextAttribute" value="base"></property>
+		</bean>
+<!-- 		解决异常，统一跳转到错误处理页面 -->
+<!-- 		<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"> -->
+<!-- 			<property name="exceptionMappings"> -->
+<!-- 				<props> -->
+<!-- 					<prop key="java.lang.Exception">errors/error</prop> -->
+<!-- 					<prop key="java.lang.Throwable">errors/err</prop> -->
+<!-- 				</props> -->
+<!-- 			</property> -->
+<!-- 			<property name="statusCodes"> -->
+<!-- 				<props> -->
+<!-- 					<prop key="errors/error">500</prop> -->
+<!-- 					<prop key="errors/404">404</prop> -->
+<!-- 				</props> -->
+<!-- 			</property> -->
+ <!-- 			设置日志输出级别，不定义则默认输出警告等错误日志信息 -->
+<!-- 			<property name="warnLogCategory" value="ERROR"></property> -->
+ <!-- 			默认错误页面，当找不到上面mapping中指定的异常对应视图时，使用本默认配置 -->
+<!-- 			<property name="defaultErrorView" value="errors/error"></property> -->
+<!-- 			<property name="defaultStatusCode" value="500"></property> -->
+<!-- 		</bean> -->
+		
+		<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+				<property value="utf-8" name="defaultEncoding"/>
+				<property value="10485760000" name="maxUploadSize"/>
+				<property value="40960" name="maxInMemorySize"/>
+	
+		</bean>
+<!-- 		 过滤器配置 -->
+<!-- 		<mvc:interceptors> -->
+<!-- 			<mvc:interceptor> -->
+<!-- 				<mvc:mapping path="/emp/*"/> -->
+<!-- 				<bean class="org.lanqiao.interceptor.LoginInterceptor"></bean> -->
+<!-- 			</mvc:interceptor> -->
+<!-- 		</mvc:interceptors> -->
+</beans>

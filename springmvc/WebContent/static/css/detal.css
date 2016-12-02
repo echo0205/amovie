@@ -1,0 +1,15 @@
+*{margin: 0;padding: 0;}
+			.datal{width: 1000px;margin: 0 auto;margin-top: 30px;}
+			.datal-tital{text-align: center;}
+			.datal-tital span{background: #4178B0;color:#FFFFFF ;padding: 10px 20px;font-size: 16px;}
+			.datal-info{text-align: center;margin: 20px 0;}
+			.datal-content{text-align: center;background: #F5F9FA;width: 900px;padding: 20px 20px;}
+			.datal-content p{text-indent: 2em;line-height: 36px;}
+			.reply ul li{list-style: none;padding-bottom: 20px;}
+			.reply{background: #EEEEEE;width: 940px;padding-bottom: 20px;}
+			.reply ul li p{margin: 10px;border-bottom: 1px solid #DEDEDE;padding: 10px 0;width:900px;}
+			.reply ul li p span:nth-child(2){float: right;padding-right: 20px;}
+			.reply ul li p span:nth-child(1){margin-left: 10px;}
+			.reply1{margin-left: 20px;width: 890px;display: block;}
+			.reply2{cursor: pointer; float: right;margin-right: 40px;color: #2965B1;font-size: 12px;background: #F7F8FA;border: 1px solid #CCCCCC;padding: 3px;}
+		

@@ -1,0 +1,11 @@
+*{margin: 0;padding: 0;}
+a{text-decoration: none;}
+.forum{width: 1000px;margin: 0 auto;margin-top: 100px;height: 200px;}
+.forum-head{background: #D2E4FF;font-size: 16px;padding: 4px 8px;font-weight: 700;}
+.forum-body{border: 2px solid #D2E4FF;}
+.forum-body ul{width: 950px;margin-left: 20px;margin-bottom: 20px;}
+.forum-body ul li{padding-left: 20px;margin-top: 10px;border-bottom: 2px solid #D2E4FF;}
+.forum-body ul li span{float: right;margin-right: 20px;}
+.paging{float: right;width: 100px;}
+.paging ul{width: 100px;}
+.paging ul li{float: left;list-style: none;}

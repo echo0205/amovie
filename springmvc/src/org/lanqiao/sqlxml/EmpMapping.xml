@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.sqlxml.EmpMapper">
+	<select id="selectEmployee"  resultType="org.lanqiao.entity.Employee">
+		<![CDATA[
+			select * from employee
+		]]>
+	</select>
+	<select id="selectEmployeeByid"  resultType="org.lanqiao.entity.Employee">
+		<![CDATA[
+			select * from employee where id=#{id}
+		]]>
+	</select>
+	<select id="pagingEmployee"  parameterType="org.lanqiao.vo.Paging" resultType="org.lanqiao.entity.Employee">
+		<![CDATA[
+			select * from employee where id LIMIT #{offset},#{limit}
+		]]>
+	</select>
+	<delete id="deleteEmployeeById" parameterType="int">
+		<![CDATA[
+			delete from employee where id = #{id}
+		]]>
+	</delete>
+	<update id="updateEmployeeById"  parameterType="org.lanqiao.entity.Employee">
+		<![CDATA[
+			update employee set name=#{name},email=#{email},telphone=#{telphone},deptId=#{deptId},imgUrl=#{imgUrl} where id=#{id}
+		]]>
+	</update>
+	<insert id="insertEmployee" parameterType="org.lanqiao.entity.Employee">
+		<![CDATA[
+			insert into employee values(#{id},#{name},#{email},#{telphone},#{deptId},#{regDate},#{imgUrl})
+		]]>
+	</insert>
+</mapper>

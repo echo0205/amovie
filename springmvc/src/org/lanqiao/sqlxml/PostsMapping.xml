@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.sqlxml.PostsMapper">
+	<resultMap type="org.lanqiao.entity.Posts" id="postsMap">
+		<id property="id" column="posts_id" />
+		<result property="author" column="posts_author" />
+		<result property="title" column="posts_title" />
+		<result property="postsDate" column="posts_Date" />
+		<result property="postsContent" column="posts_content" />
+		<collection property="reply" ofType="org.lanqiao.entity.Reply">
+			<id property="id" column="reply_id" />
+			<result property="committer" column="reply_committer" />
+			<result property="replyDate" column="reply_Date" />
+			<result property="replyContent" column="reply_content" />
+			<result property="postsId" column="reply_posts_id" />
+		</collection>
+	</resultMap>
+	<select id="selectPosts" resultMap="postsMap">
+		<![CDATA[
+			SELECT
+				posts.*, reply.reply_committer,
+				reply.reply_Date,
+				reply.reply_content,
+				reply.reply_posts_id
+			FROM
+				posts
+			LEFT JOIN reply ON posts.posts_id = reply.reply_id
+		]]>
+	</select>
+	<select id="selectPostsByid" parameterType="int" resultMap="postsMap">
+		<![CDATA[
+			SELECT
+				posts.*, reply.reply_committer,
+				reply.reply_Date,
+				reply.reply_content,
+				reply.reply_posts_id
+			FROM
+				posts
+			LEFT JOIN reply ON posts.posts_id = reply.reply_id
+			where
+				posts_id=#{posts_id}
+		]]>
+	</select>
+
+</mapper>
